@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<AuthorizeView>
+
+    <Authorizing>
+        <h1>Загрузка ...</h1>
+    </Authorizing>
+
+    <Authorized>
+        <NavMenu />
+
+        <AccountAuthorized />
+
+        @Body
+    </Authorized>
+
+    <NotAuthorized>
+        <NavMenu />
+
+        <AccountNotAuthorized />
+
+            @Body
+    </NotAuthorized>
+</AuthorizeView>
+
+@code
+{
+    [CascadingParameter]
+    Task<AuthenticationState> AuthenticationState { get; set; }
+}

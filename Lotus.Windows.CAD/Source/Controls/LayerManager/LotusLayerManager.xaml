@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Lotus.CAD.LotusLayerManager"
+				xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+				xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+				xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+				xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+				xmlns:ctrl="http://schemas.lotus.windows"
+				xmlns:local="clr-namespace:Lotus.CAD"
+				mc:Ignorable="d"
+				d:DesignHeight="300" d:DesignWidth="300">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Lotus.Windows.CAD;component/Themes/ValueConverters.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="100*"/>
+		</Grid.RowDefinitions>
+
+		<!--Управление слоями-->
+		<ctrl:LotusStackPanel Grid.Row="0" >
+			<Button Content="Добавить слой" ctrl:LotusStackPanel.Fill="Fill" Margin="2" Click="OnLayerManager_Add"/>
+			<Button Content="Удалить слой" ctrl:LotusStackPanel.Fill="Fill" Margin="2" Click="OnLayerManager_Remove"/>
+		</ctrl:LotusStackPanel>
+
+		<!--Выбор слоя-->
+		<DataGrid Grid.Row="1" x:Name="dataLayers"
+				  IsReadOnly="True"
+				  AutoGenerateColumns="False"
+				CanUserAddRows="False"
+				CanUserDeleteRows="False"
+				CanUserResizeRows="False"
+				SelectionMode="Single"
+				SelectionUnit="FullRow"
+				SelectionChanged="OnLayerManager_SelectionChanged">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+				<DataGridTemplateColumn Header="Видимость" Width="Auto">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Image Margin="2,0" Height="22" VerticalAlignment="Center"
+								   Source="{Binding Path=VisibleMode, Converter={StaticResource VisibleModeToImageConverterKey}}"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn Header="Полутон" Width="Auto">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Image Margin="2,0" Height="22" VerticalAlignment="Center"
+								   Source="{Binding Path=HalftoneMode, Converter={StaticResource HalftoneModeToImageConverterKey}}"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+			<DataGrid.GroupStyle>
+				<GroupStyle ContainerStyle="{StaticResource GroupExpanderHeaderStyleKey}"
+							HeaderTemplate="{StaticResource HeaderGroupDataGridTemplateKey}">
+				</GroupStyle>
+			</DataGrid.GroupStyle>
+			<DataGrid.RowStyle>
+				<Style TargetType="DataGridRow">
+					<EventSetter Event="MouseDoubleClick" Handler="OnLayerManager_MouseDoubleClick"/>
+				</Style>
+			</DataGrid.RowStyle>
+		</DataGrid>
+	</Grid>
+</UserControl>

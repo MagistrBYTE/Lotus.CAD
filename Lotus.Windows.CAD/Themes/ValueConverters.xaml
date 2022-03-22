@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:local="clr-namespace:Lotus.CAD">
+
+	<!--Конверторы логического типа-->
+	<local:VisibleModeToImageConverter x:Key="VisibleModeToImageConverterKey"
+										 Visible="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_visiblemode_on_32.png"
+										 Hidden="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_visiblemode_hidden_32.png" 
+										 VisibleAll="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_visiblemode_all_32.png"
+										 VisibleIsHidden="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_visiblemode_hidden_32.png"/>
+	<local:HalftoneModeToImageConverter x:Key="HalftoneModeToImageConverterKey"
+										  Disable="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_halfmode_disable_32.png"
+										  Halftone="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_halfmode_half_32.png"
+										  HalftoneGray="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Drawing/Fatcow_halfmode_gray_32.png"/>
+
+</ResourceDictionary>

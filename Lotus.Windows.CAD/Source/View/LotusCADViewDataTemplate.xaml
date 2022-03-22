@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:local="clr-namespace:Lotus.CAD"
+					xmlns:ctrl="clr-namespace:Lotus.Windows">
+	<ResourceDictionary.MergedDictionaries>
+		<!--Конверторы данных-->
+		<ResourceDictionary Source="pack://application:,,,/Lotus.Windows;component/Themes/ValueConverters.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+	
+	<!--ШАБЛОНЫ-->
+	<!--Шаблон для проекта-->
+	<HierarchicalDataTemplate x:Key="CadProjectKey" DataType="{x:Type local:CViewItemHierarchyCadEntity}" ItemsSource="{Binding Path=IViewItems}">
+		<StackPanel Orientation="Horizontal">
+			<Image Margin="2" Width="16" Height="16" Source="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Project/Oxygen_project_48.png"/>
+			<TextBlock Margin="4" Text="{Binding Path=Name}"/>
+		</StackPanel>
+	</HierarchicalDataTemplate>
+
+	<!--Шаблон для чертежа-->
+	<HierarchicalDataTemplate x:Key="CadDraftKey" DataType="{x:Type local:CViewItemHierarchyCadEntity}" ItemsSource="{Binding Path=IViewItems}">
+		<StackPanel Orientation="Horizontal">
+			<CheckBox Margin="2" IsChecked="{Binding IsChecked}"/>
+			<Image x:Name="imageFolder" Margin="2" Width="16" Height="16" Source="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Folders/Fugue_folder_horizontal_24.png"/>
+			<TextBlock Margin="4, 0" Text="{Binding Path=Name}"/>
+		</StackPanel>
+		<HierarchicalDataTemplate.Triggers>
+			<DataTrigger Binding="{Binding IsExpanded}" Value="True">
+				<Setter TargetName="imageFolder" Property="Source" Value="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Folders/Fugue_folder_horizontal_open_24.png"/>
+			</DataTrigger>
+		</HierarchicalDataTemplate.Triggers>
+	</HierarchicalDataTemplate>
+
+	<!--Шаблон для элемента-->
+	<HierarchicalDataTemplate x:Key="CadElementKey" DataType="{x:Type local:CViewItemHierarchyCadEntity}">
+		<StackPanel Orientation="Horizontal">
+			<CheckBox Margin="2" VerticalAlignment="Center" VerticalContentAlignment="Center" IsChecked="{Binding IsChecked}"/>
+			<Image Margin="2" Width="20" Height="20" SnapsToDevicePixels="True" Stretch="Fill"
+				   Source="pack://application:,,,/Lotus.Windows;component/Resources/Icons/Text/Fatcow_text_align_justity_32.png"/>
+			<TextBlock Margin="4, 0" VerticalAlignment="Center" Text="{Binding Path=Name}"/>
+		</StackPanel>
+	</HierarchicalDataTemplate>
+
+	<!--Шаблон для неизвестного типа-->
+	<HierarchicalDataTemplate x:Key="CadUnknowKey">
+		<StackPanel Orientation="Horizontal">
+			<TextBlock Margin="4, 0" Text="Неизвестный тип"/>
+		</StackPanel>
+	</HierarchicalDataTemplate>
+
+	<!-- СЕЛЕКТОР ШАБЛОНА -->
+	<local:CCadEntityDataSelector x:Key="CadEntityDataSelectorKey"
+				Project ="{StaticResource CadProjectKey}"
+				Draft="{StaticResource CadDraftKey}"
+				Element="{StaticResource CadElementKey}"
+				Unknow="{StaticResource CadUnknowKey}"/>
+</ResourceDictionary>

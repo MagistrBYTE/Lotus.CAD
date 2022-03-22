@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputPath>..\Output\$(Configuration)\</OutputPath>
+    <Authors>MagistrBYTE</Authors>
+    <Company>LotusPlatform</Company>
+    <Copyright>MagistrBYTE</Copyright>
+    <RootNamespace>Lotus.CAD</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;USE_WINDOWS</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;USE_WINDOWS</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="LotusApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dirkster.AvalonDock" Version="4.60.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.Aero" Version="4.60.1" />
+    <PackageReference Include="Fluent.Ribbon" Version="9.0.3" />
+    <PackageReference Include="Lotus.Windows.UI" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lotus.Windows.CAD\Lotus.Windows.CAD.csproj" />
+  </ItemGroup>
+
+</Project>

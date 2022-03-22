@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C126A56-021D-4297-8C63-2B571F507823}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotus.CAD", "Lotus.CAD\Lotus.CAD.csproj", "{057F8E0D-52B8-4E0B-9443-1416DBA72118}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotus.App.CAD", "Lotus.App.CAD\Lotus.App.CAD.csproj", "{DF50A0B8-FEBD-4382-A56E-47D0889420DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotus.Windows.CAD", "Lotus.Windows.CAD\Lotus.Windows.CAD.csproj", "{A25C0CC3-0F22-4A5D-984A-4166743BA054}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lotus.Web.CAD", "Lotus.Web.CAD\Lotus.Web.CAD.csproj", "{3DAC79F8-D3BA-4455-B41A-539F63506B96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{057F8E0D-52B8-4E0B-9443-1416DBA72118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{057F8E0D-52B8-4E0B-9443-1416DBA72118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{057F8E0D-52B8-4E0B-9443-1416DBA72118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{057F8E0D-52B8-4E0B-9443-1416DBA72118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF50A0B8-FEBD-4382-A56E-47D0889420DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF50A0B8-FEBD-4382-A56E-47D0889420DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF50A0B8-FEBD-4382-A56E-47D0889420DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF50A0B8-FEBD-4382-A56E-47D0889420DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25C0CC3-0F22-4A5D-984A-4166743BA054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25C0CC3-0F22-4A5D-984A-4166743BA054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25C0CC3-0F22-4A5D-984A-4166743BA054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25C0CC3-0F22-4A5D-984A-4166743BA054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DAC79F8-D3BA-4455-B41A-539F63506B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DAC79F8-D3BA-4455-B41A-539F63506B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DAC79F8-D3BA-4455-B41A-539F63506B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DAC79F8-D3BA-4455-B41A-539F63506B96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D5BE050-372E-4CE0-BDB9-E1E3DBF0A439}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,205 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputPath>..\Output\$(Configuration)\</OutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>MagistrBYTE</Authors>
+    <Company>LotusPlatform</Company>
+    <Copyright>MagistrBYTE</Copyright>
+    <RootNamespace>Lotus.CAD</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;USE_WINDOWS</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;USE_WINDOWS</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Source\Controls\Editors\**" />
+    <Compile Remove="Source\Controls\Managers\**" />
+    <EmbeddedResource Remove="Source\Controls\Editors\**" />
+    <EmbeddedResource Remove="Source\Controls\Managers\**" />
+    <None Remove="Source\Controls\Editors\**" />
+    <None Remove="Source\Controls\Managers\**" />
+    <Page Remove="Source\Controls\Editors\**" />
+    <Page Remove="Source\Controls\Managers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\cursor.png" />
+    <None Remove="Resources\Icons\draw_ellipse.png" />
+    <None Remove="Resources\Icons\draw_line.png" />
+    <None Remove="Resources\Icons\draw_polygon.png" />
+    <None Remove="Resources\Icons\draw_polyline.png" />
+    <None Remove="Resources\Icons\draw_spiral.png" />
+    <None Remove="Resources\Icons\draw_square.png" />
+    <None Remove="Resources\Icons\draw_star.png" />
+    <None Remove="Resources\Icons\draw_wave.png" />
+    <None Remove="Resources\Icons\edit_copy.png" />
+    <None Remove="Resources\Icons\edit_move.png" />
+    <None Remove="Resources\Icons\edit_rotate.png" />
+    <None Remove="Resources\Icons\edit_scale.png" />
+    <None Remove="Resources\Icons\grid.png" />
+    <None Remove="Resources\Icons\grid_snap.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Unity\Assets\Lotus.Math\Runtime\Serialization\LotusMathSerializationJson.cs" Link="Source\Serialization\LotusMathSerializationJson.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Base\LotusCADBaseElement.cs" Link="Source\Base\LotusCADBaseElement.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Base\LotusCADBaseEntity.cs" Link="Source\Base\LotusCADBaseEntity.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Base\LotusCADBaseObject.cs" Link="Source\Base\LotusCADBaseObject.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Base\LotusCADBaseShape.cs" Link="Source\Base\LotusCADBaseShape.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonControl.cs" Link="Source\Common\LotusCADCommonControl.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonDimension.cs" Link="Source\Common\LotusCADCommonDimension.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonDrawing.cs" Link="Source\Common\LotusCADCommonDrawing.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonPaper.cs" Link="Source\Common\LotusCADCommonPaper.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonPrint.cs" Link="Source\Common\LotusCADCommonPrint.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonSettings.cs" Link="Source\Common\LotusCADCommonSettings.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Common\LotusCADCommonTransform.cs" Link="Source\Common\LotusCADCommonTransform.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Configuration\LotusCADModuleInitializer.cs" Link="Source\Configuration\LotusCADModuleInitializer.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Controls\LotusCADControlCanvasViewer.cs" Link="Source\IControls\LotusCADControlCanvasViewer.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Layer\LotusCADLayerCommon.cs" Link="Source\Layer\LotusCADLayerCommon.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Layer\LotusCADLayerEntity.cs" Link="Source\Layer\LotusCADLayerEntity.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Layer\LotusCADLayerManager.cs" Link="Source\Layer\LotusCADLayerManager.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Layer\LotusCADLayerSupport.cs" Link="Source\Layer\LotusCADLayerSupport.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Memento\LotusCADMemento.cs" Link="Source\Memento\LotusCADMemento.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitive.cs" Link="Source\Primitives\LotusCADPrimitive.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveArc.cs" Link="Source\Primitives\LotusCADPrimitiveArc.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveEllipse.cs" Link="Source\Primitives\LotusCADPrimitiveEllipse.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveGeometry.cs" Link="Source\Primitives\LotusCADPrimitiveGeometry.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveGeometrySegments.cs" Link="Source\Primitives\LotusCADPrimitiveGeometrySegments.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveImage.cs" Link="Source\Primitives\LotusCADPrimitiveImage.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveLine.cs" Link="Source\Primitives\LotusCADPrimitiveLine.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveRect.cs" Link="Source\Primitives\LotusCADPrimitiveRect.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Primitives\LotusCADPrimitiveText.cs" Link="Source\Primitives\LotusCADPrimitiveText.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Selecting\LotusCADSelecting.cs" Link="Source\Selecting\LotusCADSelecting.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Serialization\LotusCADSerializationCommon.cs" Link="Source\Serialization\LotusCADSerializationCommon.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Shape\LotusCADShapeLine.cs" Link="Source\Shape\LotusCADShapeLine.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Shape\LotusCADShapeRect.cs" Link="Source\Shape\LotusCADShapeRect.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Storage\LotusCADStorageDraft.cs" Link="Source\Storage\LotusCADStorageDraft.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Storage\LotusCADStorageProject.cs" Link="Source\Storage\LotusCADStorageProject.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Tools\Create\LotusCADToolCreate.cs" Link="Source\Tools\Create\LotusCADToolCreate.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Tools\Create\LotusCADToolCreateLine.cs" Link="Source\Tools\Create\LotusCADToolCreateLine.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Tools\Create\LotusCADToolCreateRect.cs" Link="Source\Tools\Create\LotusCADToolCreateRect.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Tools\LotusCADTool.cs" Link="Source\Tools\LotusCADTool.cs" />
+    <Compile Include="..\Lotus.CAD\Source\View\LotusCADViewCollectionEntity.cs" Link="Source\View\LotusCADViewCollectionEntity.cs" />
+    <Compile Include="..\Lotus.CAD\Source\View\LotusCADViewEntity.cs" Link="Source\View\LotusCADViewEntity.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Brush\LotusCADVisualBrush.cs" Link="Source\Visual\Brush\LotusCADVisualBrush.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Brush\LotusCADVisualBrushHatch.cs" Link="Source\Visual\Brush\LotusCADVisualBrushHatch.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Brush\LotusCADVisualBrushImage.cs" Link="Source\Visual\Brush\LotusCADVisualBrushImage.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Brush\LotusCADVisualBrushLinearGradient.cs" Link="Source\Visual\Brush\LotusCADVisualBrushLinearGradient.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Brush\LotusCADVisualBrushManager.cs" Link="Source\Visual\Brush\LotusCADVisualBrushManager.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Brush\LotusCADVisualBrushSolid.cs" Link="Source\Visual\Brush\LotusCADVisualBrushSolid.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Font\LotusCADVisualFontCommon.cs" Link="Source\Visual\Font\LotusCADVisualFontCommon.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Font\LotusCADVisualFontEntity.cs" Link="Source\Visual\Font\LotusCADVisualFontEntity.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Font\LotusCADVisualFontManager.cs" Link="Source\Visual\Font\LotusCADVisualFontManager.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\LotusCADVisualFill.cs" Link="Source\Visual\LotusCADVisualFill.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\LotusCADVisualStroke.cs" Link="Source\Visual\LotusCADVisualStroke.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\PenStyle\LotusCADVisualPenStyle.cs" Link="Source\Visual\PenStyle\LotusCADVisualPenStyle.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\PenStyle\LotusCADVisualPenStyleManager.cs" Link="Source\Visual\PenStyle\LotusCADVisualPenStyleManager.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Pen\LotusCADVisualPen.cs" Link="Source\Visual\Pen\LotusCADVisualPen.cs" />
+    <Compile Include="..\Lotus.CAD\Source\Visual\Pen\LotusCADVisualPenManager.cs" Link="Source\Visual\Pen\LotusCADVisualPenManager.cs" />
+    <Compile Include="Source\Controls\Editors\LotusEditorImageSource.xaml.cs" />
+    <Compile Include="Source\Controls\Editors\LotusEditorSelectorBrush.xaml.cs" />
+    <Compile Include="Source\Controls\Editors\LotusEditorSelectorFont.xaml.cs" />
+    <Compile Include="Source\Controls\Editors\LotusEditorSelectorLayer.xaml.cs" />
+    <Compile Include="Source\Controls\Editors\LotusEditorSelectorPen.xaml.cs" />
+    <Compile Include="Source\Controls\Editors\LotusEditorSelectorPenStyle.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Source\Common\" />
+    <Folder Include="Source\Controls\LayerManager\" />
+    <Folder Include="Source\Controls\PenManager\" />
+    <Folder Include="Source\Controls\PenStyleManager\" />
+    <Folder Include="Source\IControls\" />
+    <Folder Include="Source\Shape\" />
+    <Folder Include="Source\Storage\" />
+    <Folder Include="Source\Tools\Create\" />
+    <Folder Include="Source\Visual\Brush\" />
+    <Folder Include="Source\Visual\Pen\" />
+    <Folder Include="Source\Configuration\" />
+    <Folder Include="Source\Selecting\" />
+    <Folder Include="Source\Base\" />
+    <Folder Include="Source\Layer\" />
+    <Folder Include="Source\Visual\PenStyle\" />
+    <Folder Include="Source\Visual\Font\" />
+    <Folder Include="Source\Memento\" />
+    <Folder Include="Source\Serialization\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lotus.Windows" Version="1.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Source\Controls\Editors\LotusEditorImageSource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Controls\Editors\LotusEditorSelectorBrush.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Controls\Editors\LotusEditorSelectorFont.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Controls\Editors\LotusEditorSelectorLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Controls\Editors\LotusEditorSelectorPen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Controls\Editors\LotusEditorSelectorPenStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\cursor.png" />
+    <Resource Include="Resources\Icons\draw_ellipse.png" />
+    <Resource Include="Resources\Icons\draw_line.png" />
+    <Resource Include="Resources\Icons\draw_polygon.png" />
+    <Resource Include="Resources\Icons\draw_polyline.png" />
+    <Resource Include="Resources\Icons\draw_spiral.png" />
+    <Resource Include="Resources\Icons\draw_square.png" />
+    <Resource Include="Resources\Icons\draw_star.png" />
+    <Resource Include="Resources\Icons\draw_wave.png" />
+    <Resource Include="Resources\Icons\edit_copy.png" />
+    <Resource Include="Resources\Icons\edit_move.png" />
+    <Resource Include="Resources\Icons\edit_rotate.png" />
+    <Resource Include="Resources\Icons\edit_scale.png" />
+    <Resource Include="Resources\Icons\grid.png" />
+    <Resource Include="Resources\Icons\grid_snap.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Source\View\LotusCADViewDataTemplate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ValueConverters.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
+</Project>

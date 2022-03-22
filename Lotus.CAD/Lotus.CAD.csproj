@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <OutputPath>..\Output\$(Configuration)\</OutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>MagistrBYTE</Authors>
+    <Company>LotusPlatform</Company>
+    <Copyright>MagistrBYTE</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Source\Shape\LotusCADShape.cs" />
+    <Compile Remove="Source\Shape\LotusCADShapeBase.cs" />
+    <Compile Remove="Source\Shape\LotusCADShapeEllipse.cs" />
+    <Compile Remove="Source\Shape\LotusCADShapeImage.cs" />
+    <Compile Remove="Source\Shape\LotusCADShapePolyline.cs" />
+    <Compile Remove="Source\Shape\LotusCADShapeTable.cs" />
+    <Compile Remove="Source\Shape\LotusCADShapeText.cs" />
+    <Compile Remove="Source\Tools\LotusCADToolCreateArc.cs" />
+    <Compile Remove="Source\Tools\LotusCADToolCreateEllipse.cs" />
+    <Compile Remove="Source\Tools\LotusCADToolCreateImage.cs" />
+    <Compile Remove="Source\Tools\LotusCADToolCreatePolyline.cs" />
+    <Compile Remove="Source\Tools\LotusCADToolCreateTable.cs" />
+    <Compile Remove="Source\Tools\LotusCADToolCreateText.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Unity\Assets\Lotus.Math\Runtime\Serialization\LotusMathSerializationJson.cs" Link="Source\Serialization\LotusMathSerializationJson.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lotus.Core" Version="1.2.0" />
+    <PackageReference Include="Lotus.Math" Version="1.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,182 @@
+﻿@page "/CAD/CadCanvas"
+
+@using Blazor.Extensions
+@using Blazor.Extensions.Canvas
+@using Blazor.Extensions.Canvas.Canvas2D
+
+@using Lotus.Web.CAD;
+
+@inject IJSRuntime JsRuntime;
+@inject Konva Konva
+
+<div id="konva-div" @ref="mElementReferenceDiv" 
+     style="width: 80%; height: 600px; background-color: burlywood; margin-left: 1cm; margin-top: 1cm;" 
+     @onmousedown="@((args) => OnMouseDown(args))">
+</div>
+
+<button>@Stage1?.GetWidthAsync().Result</button>
+
+@code
+{
+    IJSObjectReference mModule;
+    BECanvasComponent _canvas = null;
+    Canvas2DContext _outputCanvasContext;
+
+    public Int32 Width = 1600;
+    public Int32 Height = 800;
+    public Int32 StartX;
+    public Int32 StartY;
+    public Int32 EndY;
+    public Int32 EndX;
+    public Boolean mIsDraw;
+
+
+    protected Layer Layer1 = null;
+    protected Stage Stage1 = null;
+
+    protected ElementReference mElementReferenceDiv;
+
+    //public EventCallback<MouseEventArgs> OnMouseDownCallback = new EventCallback<MouseEventArgs>(OnMouseDown);
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await base.OnInitializedAsync();
+
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+            mModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import", "./common.js");
+            await mModule.InvokeAsync<System.Object>("InitCadCanvas", DotNetObjectReference.Create(this), mElementReferenceDiv);
+
+            Stage1 = await Konva.CreateStageAsync(container: "konva-div", width: 1600, height: 800);
+
+            Layer1 = await Konva.CreateLayerAsync();
+
+            await Stage1.AddAsync(Layer1);
+
+            await Layer1.Draw();
+        }
+        else
+        {
+            //var result = await JsRuntime.InvokeAsync<BoundingClientRect>("getBoundingClientRect", mElementReferenceDiv);
+            //Width = (Int32)result.Width;
+            //Height = (Int32)result.Height;
+
+            //await JsRuntime.InvokeAsync<object>("onInit", DotNetObjectReference.Create(this));
+        }
+
+
+        //_outputCanvasContext = await _canvas.CreateCanvas2DAsync();
+
+
+    }
+
+    [JSInvokable]
+    protected async Task OnInit()
+    {
+        //await JsRuntime.InvokeAsync<object>("initGame", DotNetObjectReference.Create(this));
+
+        //_game = await CharacterGame.Create(_canvas, animationsSet);
+
+        // this will make sure that the viewport is correctly initialized
+        //await JsRuntime.InvokeAsync<object>("gameWindowResize", DotNetObjectReference.Create(this));
+    }
+
+    [JSInvokable]
+    public async Task OnTick(float time_stamp)
+    {
+        ////if (null == _game) return;
+        ////await _game.Step(timeStamp);
+
+        //await _outputCanvasContext.ClearRectAsync(0, 0, Width, Height);
+        ////await _outputCanvasContext.ClearRectAsync(0, 0, Width, Height);
+
+        //if (mIsDraw)
+        //{
+        //    await _outputCanvasContext.SetFillStyleAsync("green");
+        //    await _outputCanvasContext.SetLineWidthAsync(2.0f);
+        //    await _outputCanvasContext.LineToAsync(EndX, EndY);
+
+        //}
+
+        //if (mIsDraw)
+        //{
+        //    await this._outputCanvasContext.SetFillStyleAsync("green");
+
+        //    await this._outputCanvasContext.FillRectAsync(10, 100, EndX, EndY);
+
+        //    await this._outputCanvasContext.SetFontAsync("48px serif");
+        //    await this._outputCanvasContext.StrokeTextAsync("Hello Blazor!!!", 10, 100);
+        //}
+    }
+
+    [JSInvokable]
+    public async ValueTask OnResize(Int32 canvas_width, Int32 canvas_height)
+    {
+        if (Stage1 != null)
+        {
+            await Stage1.SetWidthAsync(canvas_width);
+            await Stage1.SetHeightAsync(canvas_height);
+        }
+    }
+
+    [JSInvokable]
+    public async ValueTask OnMouseMove(int mouseX, int mouseY)
+    {
+        //InputSystem.Instance.MouseCoords.X = mouseX;
+        //InputSystem.Instance.MouseCoords.Y = mouseY;
+        //if(mIsDraw)
+        //{
+        //    EndX = mouseX;
+        //    EndY = mouseY;
+        //}
+    }
+
+    //[JSInvokable]
+    public async Task OnMouseDown(MouseEventArgs e)
+    {
+        //InputSystem.Instance.SetButtonState(button, ButtonState.States.Down);
+        //mIsDraw = true;
+        //StartX = mouseX;
+        //StartY = mouseY;
+        //EndX = mouseX;
+        //EndY = mouseY;
+
+        var circle = await Konva.CreateCircleAsync(
+            x: e.ClientX,
+            y: e.ClientY,
+            radius: 70,
+            fill: "red",
+            stroke: "black",
+            strokeWidth: 4
+        );
+
+        await Layer1.AddAsync(circle);
+
+    }
+
+    [JSInvokable]
+    public async ValueTask OnMouseUp(int button, int mouseX, int mouseY)
+    {
+        //InputSystem.Instance.SetButtonState(button, ButtonState.States.Up);
+        //mIsDraw = false;
+    }
+
+    [JSInvokable]
+    public async ValueTask OnKeyDown(int keyCode)
+    {
+        //InputSystem.Instance.SetKeyState((Keys)keyCode, ButtonState.States.Down);
+    }
+
+    [JSInvokable]
+    public async ValueTask OnKeyUp(int keyCode)
+    {
+        //InputSystem.Instance.SetKeyState((Keys)keyCode, ButtonState.States.Up);
+    }
+}
